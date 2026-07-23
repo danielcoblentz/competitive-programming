@@ -4,7 +4,7 @@ a.out
 *.exe
 usaco/sample_problem
 usaco/setup
-codeforces/ReplaceAndSum
+codeforces/replace_and_sum
 
 # macOS
 .DS_Store
