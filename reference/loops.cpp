@@ -1,5 +1,5 @@
 //getting a subset of content, must define start, end no [1:3] then loop it
-for (int i = start, i < end;i ++) {...}
+for (int i = start; i < end; i++) {...}
 
 // if we dont need acess to idx
 for (int x : arr){...}

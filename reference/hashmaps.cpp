@@ -4,6 +4,8 @@
 unordered_map<string, int> m;
 unordered_map<string, int> m2 = {{"a", 1}, {"b", 2}, {"c", 3}};
 
+map<vector<int>, vector<string>> count; // --> this allows us to use vectors as keys!
+
 
 //adding/updating a single key (creates it if missing, overwrites if present)
 m["d"] = 4;
@@ -47,3 +49,6 @@ if (prevMap.find(diff) != prevMap.end()) { /* found */ }
 auto maxIt = max_element(freq.begin(), freq.end(), [](auto& a, auto& b) { return a.second < b.second; });
 // maxIt->first  = the key  (the most frequent char)
 // maxIt->second = the value (how many times it showed up) this gets the value associated with the second position in the tupel <char, int> longest repeating char replacement problem
+
+//checking if two maps are equal checks the length first, keys then the values
+return count1 == count2
