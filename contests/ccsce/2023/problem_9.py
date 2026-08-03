@@ -10,7 +10,7 @@ def validate(s: str) -> str:
         if ch.isupper():
             # `ch` is uppercase
             if ch == 'X':
-                if i == n:
+                if i == n - 1:
                     # X cannot be the last character
                     return "Trick!"
                 # If we're nested and the character following X is uppercase, this
