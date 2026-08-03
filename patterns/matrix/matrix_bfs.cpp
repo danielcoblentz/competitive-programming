@@ -43,4 +43,5 @@ int bfs(vector<vector<int>>& grid) {
         }
         length++;
     }
+    return -1; // bottom-right unreachable
 }

@@ -3,7 +3,7 @@
 using std::vector;
 
 int binarySearch(vector<int> arr, int target) {
-    int L = 0, R = arr.size();
+    int L = 0, R = arr.size() - 1;
 
     while (L <= R) {
         int mid = (L + R) / 2;

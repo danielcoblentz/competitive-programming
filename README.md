@@ -9,7 +9,7 @@ contests/ccsce/<year>/   CCSCE contest PDFs, solutions (problem_N.py), and tests
 codeforces/              Codeforces solutions
 leetcode/                LeetCode solutions
 usaco/                   USACO solutions
-templates/               Reusable algorithm templates (DP, trees, sorting, ...)
+patterns/                Reusable algorithm patterns (DP, trees, sorting, ...)
 reference/               C++ language reference notes (arrays, maps, snippets, ...)
 usaco-guide/             Fork of the USACO Guide site (merged subtree)
 ```
