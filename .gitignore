@@ -3,9 +3,8 @@ a.out
 *.out
 *.o
 *.exe
-usaco/sample_problem
-usaco/setup
 codeforces/replace_and_sum
+test-file
 
 # macOS
 .DS_Store
