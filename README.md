@@ -1,20 +1,26 @@
 # Competitive Programming Repo
 
-Solutions to competitive programming problems from CCSCE contests, Codeforces, LeetCode, and USACO, plus reusable algorithm templates and C++ reference notes.
+Solutions to competitive programming problems from CCSCE contests, Codeforces, and LeetCode, plus reusable algorithm templates and C++ reference notes.
 
 ## File structure
 
 ```
 contests/ccsce/<year>/   CCSCE contest PDFs, solutions (problem_N.py), and tests/
-codeforces/              Codeforces solutions
+contests/CF/             Codeforces solutions
 leetcode/                LeetCode solutions
-usaco/                   USACO solutions
-patterns/                Reusable algorithm patterns (DP, trees, sorting, ...)
+leetcode/nc150/          NeetCode 150, grouped by topic
+templates/               Reusable algorithm templates, grouped by topic
 reference/               C++ language reference notes (arrays, maps, snippets, ...)
 usaco-guide/             Fork of the USACO Guide site (merged subtree)
 ```
 
-Naming convention: snake_case filenames; contest solutions are `problem_N.py` inside their year folder.
+`templates/` covers arrays, backtracking, bits, DP (top-down and bottom-up), graphs,
+heaps, linked lists, matrices, searching, sorting, and trees. Each file is a
+standalone reference: it compiles on its own but has no `main()`, so it's meant to
+be read and copied from rather than run.
+
+Naming convention: contest solutions are `problem_N.py` inside their year folder.
+Templates use kebab-case (`sliding-window.cpp`); older files use snake_case.
 
 ## Setup
 
@@ -27,7 +33,7 @@ Naming convention: snake_case filenames; contest solutions are `problem_N.py` in
    ```bash
    g++ -std=c++17 -O2 -I .vscode/include -o sol solution.cpp && ./sol < input.txt
    ```
-3. Python: no dependencies for solutions; `scripts/extract_pdf.py` needs `PyPDF2`.
+3. Python: no dependencies, the solutions use the standard library only.
 
 ### Shell shortcuts (`comp` / `run` / `build`)
 
@@ -40,9 +46,9 @@ Terminal helpers for compiling C++ without the full `g++` incantation. They live
 | `build <file>`   | compile, then run                                 |
 
 ```bash
-build test-file            # compile + run
-build test-file < in.txt   # feed input from a file
-run test-file arg1 arg2    # extra args forwarded to the program
+build solution            # compile + run
+build solution < in.txt   # feed input from a file
+run solution arg1 arg2    # extra args forwarded to the program
 ```
 
 Compiles with `g++ -std=c++20 -O2 -Wall -Wextra`. The `*.out` binaries are gitignored.
@@ -95,4 +101,4 @@ Example-based smoke tests live next to their contest year (e.g. `contests/ccsce/
 python3 -m unittest discover -v
 ```
 
-Tests run the solution scripts as subprocesses, feeding example input via stdin and comparing stdout against the expected outputs from the contest PDFs. If you add or modify solutions, add matching tests to keep coverage current. Tests also run automatically in CI on push/PR (`.github/workflows/python-tests.yml`).
+Tests run the solution scripts as subprocesses, feeding example input via stdin and comparing stdout against the expected outputs from the contest PDFs. If you add or modify solutions, add matching tests to keep coverage current.
