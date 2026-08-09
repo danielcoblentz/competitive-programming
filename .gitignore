@@ -6,6 +6,11 @@ a.out
 codeforces/replace_and_sum
 test-file
 
+# Local agent instructions
+CLAUDE.md
+.claude/
+.anthropic/
+
 # macOS
 .DS_Store
 
