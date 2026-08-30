@@ -21,7 +21,7 @@
 
 #include <bits/stdc++.h>
 using namespace std;
-
+#define vvi vector<vector<int>>
 // ---------------------------------------------------------------------
 // 1. MAX-HEAP (default) — top() is always the LARGEST element
 // ---------------------------------------------------------------------
@@ -131,3 +131,4 @@ int main() {
     customCompDemo();  // -10
     return 0;
 }
+// how has AI amde a large impact, token reduction, automations -- making reuseable solutions or a chatbot -- autoamted release and amde a CLI for it, RCA , 
