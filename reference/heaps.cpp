@@ -3,7 +3,7 @@
 
 #include <bits/stdc++.h>
 using namespace std;
-
+#define vvi vector<vector<int>>
 // max heap, top() is the largest
 void maxHeapDemo() {
     priority_queue<int> maxH;
