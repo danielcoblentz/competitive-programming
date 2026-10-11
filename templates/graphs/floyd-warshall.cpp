@@ -1,78 +1,59 @@
-// Floyd-Warshall: shortest path between EVERY pair of nodes.
-// O(n^3) time, O(n^2) memory, so it's the right pick when n is small (~500 or
-// less) and you need all pairs. Works with negative edge weights.
-// If the graph is sparse, n runs of Dijkstra is O(n*m*log n) and beats this.
-//
-// input: n m, then m lines of "a b w" (edge a<->b with weight w)
+#include <bits/stdc++.h>
+using namespace std;
 
-#include <iostream>
-#include <algorithm>
+#define endl '\n'
+#define ll long long
+#define pb push_back
 
-using std::cin;
-using std::cout;
-using std::min;
+const ll MOD = 1e9 + 7;
+const ll INF = 1e18;
 
-const int N = 505;              // max nodes + 1, since we're 1-indexed
-const long long INF = 1e18;     // "no path". long long matters: with n=500 and
-                                // weights up to 1e9 a real path hits ~5e11, which
-                                // blows past int
-
-int n, m;
-long long dist[N][N];           // dist[i][j] = best distance found so far
-
-int main(){
-    std::ios::sync_with_stdio(false);   // the output is n^2 numbers, so untying
-    cin.tie(nullptr);                   // cin/cout from stdio is worth it
-
+void solve() {
+    int n, m; // n = num nodes, m = num edges
     cin >> n >> m;
 
-    // 0 to yourself, INF to everyone else until we see an edge
+    //make the matrix & fill with inf init path weight unless equal then its zero
+    vector<vector<ll>> dst(n + 1, vector<ll>(n + 1));
     for (int i = 1; i <= n; i++) {
         for (int j = 1; j <= n; j++) {
-            dist[i][j] = (i == j ? 0 : INF);
+            if (i == j) dst[i][j] = 0;
+            else dst[i][j] = INF;
         }
     }
 
-    // read edges straight into dist. min() handles the input listing a pair
-    // twice, and unlike a separate adj matrix a 0-weight edge still registers
-    for (int e = 0; e < m; e++) {
+    //add the edges for each pair and keep the cheaper one when we lsit hte same pair twice, the seond line sets the reverse direction because its undirected
+
+    for (int i = 0; i < m; i++) {
         int a, b;
-        long long w;
+        ll w;
         cin >> a >> b >> w;
-        dist[a][b] = min(dist[a][b], w);
-        dist[b][a] = min(dist[b][a], w);   // drop for a directed graph
+        dst[a][b] = min(dst[a][b], w);
+        dst[b][a] = min(dst[b][a], w);
     }
 
-    // k = the highest numbered node a path is allowed to pass through, so it
-    // MUST be the outer loop. by the time we read dist[i][k], every route that
-    // only goes through 1..k-1 is already final
+    // find shortest distance
     for (int k = 1; k <= n; k++) {
         for (int i = 1; i <= n; i++) {
-            long long dik = dist[i][k];
-            if (dik >= INF / 2) continue;   // i can't reach k, so k helps nothing
+            if (dst[i][k] == INF) continue;
             for (int j = 1; j <= n; j++) {
-                // either avoid k, or go i -> k -> j
-                dist[i][j] = min(dist[i][j], dik + dist[k][j]);
+                if (dst[k][j] == INF) continue;
+                dst[i][j] = min(dst[i][j], dst[i][k] + dst[k][j]) ;
             }
         }
     }
 
-    // getting back to yourself for a negative cost means a negative cycle, and
-    // every distance touching it is meaningless
-    for (int i = 1; i <= n; i++) {
-        if (dist[i][i] < 0) {
-            cout << "negative cycle\n";
-            return 0;
-        }
-    }
-
-    // compare against INF/2, not INF: adding a negative weight to INF leaves a
-    // value that's still nonsense but no longer exactly INF
     for (int i = 1; i <= n; i++) {
         for (int j = 1; j <= n; j++) {
-            cout << (dist[i][j] >= INF / 2 ? -1 : dist[i][j]);
-            cout << (j == n ? '\n' : ' ');
+            cout << (dst[i][j] == INF ? -1 : dst[i][j]) << " ";
         }
+        cout << endl;
     }
+}
+
+int main() {
+    ios_base::sync_with_stdio(false);
+    cin.tie(NULL);
+
+    solve();
     return 0;
 }
