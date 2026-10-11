@@ -1,9 +1,12 @@
 #include <iostream>
 #include <queue>
+#include <vector>
 
 using std::cout;
 using std::endl;
 using std::queue;
+using std::vector;
+#define vvi vector<vector<int>>
 
 class TreeNode {
     public:
@@ -16,29 +19,27 @@ class TreeNode {
         }
 };
 
-void bfs(TreeNode* root) {
-    queue<TreeNode*> queue;
+vvi bfs(TreeNode* root) {
+    if (!root) return {};
+    queue<TreeNode*> q;
+    vvi res;
 
-    if (root) {
-        queue.push(root);
-    }
-    
-    int level = 0;
-    while (queue.size() > 0) {
-        cout << "level: " << level << endl;
-        int length = queue.size();
+    q.push(root);
+
+    while (q.size()) {
+        int length = q.size();
+        vector<int> lvl;
         for (int i = 0; i < length; i++) {
-            TreeNode* curr = queue.front();
-            queue.pop();
-            cout << curr->val_ << ' ';
-            if (curr->left) {
-                queue.push(curr->left);
-            }
-            if (curr->right) {
-                queue.push(curr->right);
-            }
+            TreeNode* node = q.front();
+            q.pop();
+
+            if (node->left) q.push(node->left);
+            if (node->right) q.push(node->right);
+            lvl.push_back(node->val_);
         }
-        level++;
-        cout << endl;
+
+        res.push_back(lvl);
     }
+
+    return res;
 }
