@@ -15,7 +15,4 @@ auto [num, str, flag] = t;
 
 
 auto [vars] = thing;
-^     ^       ^
-│     │       └── must be pair, tuple, array, or struct
-│     └────────── variables always inside brackets
-└──────────────── auto always outside brackets
+auto goes outside the brackets, the variables inside, and the right side must be a pair, tuple, array, or struct

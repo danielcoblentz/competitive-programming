@@ -16,16 +16,12 @@ int main() {
     //getting a substring (start idx, (int)length we want to grab up to)
     cout << s.substr(1, 4) << endl;
     // s.substr(start, length);
-    //            ^      ^
-    //            │      └── how many chars to grab (not an end index)
-    //            └───────── idx to begin at
+    // length is a count of chars, not an end index
 
     // if we pass in one value it scans the entire string for it from idx 0, if we pass in a second value it tart only from that idx scans forward
     cout << (int)s.find('t', 2) << endl;   // returns string::npos if not found
     // s.find(target, from);
-    //          ^      ^
-    //          │      └── idx to start scanning from (optional, defaults to 0)
-    //          └───────── char/substring being searched for
+    // from is optional and defaults to 0
 
     //int to string  (stoi goes the other way: string -> int)
     int n = 5;

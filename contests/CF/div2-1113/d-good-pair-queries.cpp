@@ -22,7 +22,7 @@ void solve() {
         4: vice versa case for 3
     */
 
-    //count of matching character pairs from idx 0 up to idx i−1
+    //count of matching character pairs from idx 0 up to idx i-1
     for (int i = 0; i < n; i++) {
         prefix_00[i + 1] = prefix_00[i] + (s[i] == '0' && t[i] == '0');
         prefix_11[i + 1] = prefix_11[i] + (s[i] == '1' && t[i] == '1');

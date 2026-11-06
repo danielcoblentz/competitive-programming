@@ -14,5 +14,5 @@ __pycache__/
 *.pyc
 *.pyo
 
-# VS Code (optional — remove if you want to track these)
+# VS Code (optional, remove if you want to track these)
 # .vscode/
